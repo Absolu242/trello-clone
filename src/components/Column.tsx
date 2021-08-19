@@ -1,10 +1,15 @@
 import React from 'react'
 import { ColumnContainer, ColumnTitle } from '../styles'
 
-export default function Column() {
+interface ColumnProps{
+   text:string
+}
+
+export default function Column({text,children}:React.PropsWithChildren<ColumnProps>) {
    return (
       <ColumnContainer>
-         <ColumnTitle>Column Title</ColumnTitle>
+         <ColumnTitle>{text}</ColumnTitle>
+         {children}
       </ColumnContainer>
    )
 }

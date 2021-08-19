@@ -1,10 +1,12 @@
 import React from 'react';
+import Column from './components/Column';
+import { AppContainer } from './styles';
 
 function App() {
   return (
-    <div className="App">
-     hi bro
-    </div>
+    <AppContainer>
+  
+    </AppContainer>
   );
 }
 
