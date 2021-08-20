@@ -7,10 +7,11 @@ import Card from "./Card"
 interface ColumnProps {
   text: string
   index: number
+  id: string
 }
 
-export default function Column({ text, index }: ColumnProps) {
-  const { state } = useAppState()
+export default function Column({ text, index, id }: ColumnProps) {
+  const { state, dispatch } = useAppState()
 
   return (
     <ColumnContainer>
@@ -20,7 +21,9 @@ export default function Column({ text, index }: ColumnProps) {
       ))}
       <AddNewItem
         toggleButtonText='+ Add another task'
-        onAdd={console.log}
+        onAdd={(text) =>
+          dispatch({ type: "ADD_TASK", payload: { text, taskId: id } })
+        }
         dark
       />
     </ColumnContainer>
