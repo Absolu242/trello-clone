@@ -1,21 +1,17 @@
 import React from "react"
-import AddNewItem from "./components/AddNewItem"
-import Card from "./components/Card"
+import { AddNewItem } from "./components/AddNewItem"
 import Column from "./components/Column"
+import { useAppState } from "./store/AppStateContext"
 import { AppContainer } from "./styles"
 
 function App() {
+  const { state } = useAppState()
   return (
     <AppContainer>
-      <Column text='To Do'>
-        <Card text='Build more ts/react apps' />
-      </Column>
-      <Column text='In Progress'>
-        <Card text='Building a ts/react app' />
-      </Column>
-      <Column text='Done'>
-        <Card text='Build my portfolio' />
-      </Column>
+      {state.lists.map((list, i) => (
+        <Column text={list.text} key={list.id} index={i} />
+      ))}
+
       <AddNewItem toggleButtonText='+ Add another list' onAdd={console.log} />
     </AppContainer>
   )
